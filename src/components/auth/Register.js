@@ -7,6 +7,9 @@ import './Auth.css'
 export const Register = () => {
   const username = useRef()
   const password = useRef()
+  const email = useRef()
+  const firstName = useRef()
+  const lastName = useRef()
   const history = useHistory()
 
   const handleRegister = (e) => {
@@ -19,11 +22,13 @@ export const Register = () => {
       "first_name": firstName.current.value,
       "last_name": lastName.current.value 
     }
-
+    
+    // how do i get the id of this user after the object is created
+    // so i can push the client to a view to fill out their profile info?
     registerUser(newUser).then(res => {
       if ("token" in res) {
         localStorage.setItem("auth_token", res.token)
-        history.push("/create-profile")
+        history.push('/create-profile')
       }
     })
   }
