@@ -8,6 +8,7 @@ export const LandingPage = () => {
     return (
     <>  
         <main>
+            <p>i</p>
             <section className="hero-section">
                 <Box component="img"
                     sx={{
@@ -21,6 +22,11 @@ export const LandingPage = () => {
                     <Typography variant="body1">A forum built by musicians for musicians.<br/>
                     Come have engaging conversations about a diversity of topics!</Typography>
                 </Box>
+            </section>
+            <section className="about-section">
+                <Box></Box>
+                <Box></Box>
+                <Box></Box>
             </section>
         </main>
     </>

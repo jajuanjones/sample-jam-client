@@ -15,10 +15,6 @@ export const SampleJam = () => {
   }
 
   return <>
-    <Route exact path="welcome-page">
-        <LandingPage/>
-    </Route>
-
     <Route>
         <NavBar token={token} setToken={setToken} />
         <ApplicationViews />

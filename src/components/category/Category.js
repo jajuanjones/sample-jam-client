@@ -1,9 +1,11 @@
 import { Box } from "@mui/system";
 import React, { useState,useEffect } from "react";
 import ForumIcon from '@mui/icons-material/Forum';
+import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
-export const Category = ( category ) => {
+export const Category = ({category}) => {
 
     return (
         <>
@@ -13,8 +15,10 @@ export const Category = ( category ) => {
             <Box>
                 <ForumIcon/>
             </Box>
-            <Box key={category.id}>
-                {category.label}
+            <Box sx={{m: "1rem"}} key={category.id}>
+                <Link to={`/forums/forum/${category.id}/posts`}>
+                    <Typography variant="body1">{category.label}</Typography>
+                </Link>
             </Box>
         </Box>
         </>

@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { PostList } from "../post/PostList";
 import { getSingleCategory } from "./CategoryManager";
+import { Box } from "@mui/system";
 
 export const SingleCategory = () => {
     const [category, updateCategory] = useState({})
-    // { categoryId } = useParams()
+    const [posts, setPosts] = useState([])
+    const {categoryId} = useParams()
 
-    // useEffect(()=>{
-    //     categoryId ?
-    //     getSingleCategory(categoryId)
-    // },[])
+    useEffect(()=>{
+            if (categoryId) {
+                getSingleCategory(categoryId).then(data=>updateCategory(data))
+            } 
+    },[categoryId])
 
-    const filterPostsWithThisCategory = () => {
 
-    }
+    const filteredPosts = posts.filter(post => {
+        return post.category === category
+    })
 
     return(
         <>
+            <Box>
+                {
+                    filteredPosts.map(post => {
+                        return <Box>
+                                    <PostList post={post}/>
+                                </Box>
+                    })
+                }
+            </Box>
         </>
     )
 }

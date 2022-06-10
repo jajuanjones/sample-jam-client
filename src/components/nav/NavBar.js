@@ -18,8 +18,7 @@ export const NavBar = () => {
           </button>
           :
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login">Login/Register</Link>
           </>
       }
     </nav>
