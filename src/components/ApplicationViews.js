@@ -4,6 +4,7 @@ import { CategoryList } from "./category/CategoryList"
 import { SingleCategory } from "./category/SingleCategory"
 import { CreateProfile } from "./profile/CreateProfile"
 import { LandingPage } from "./landing/LandingPage"
+import { SinglePost } from "./post/SinglePost"
 
 export const ApplicationViews = () => {
     return <>
@@ -11,7 +12,7 @@ export const ApplicationViews = () => {
             <Route exact path="/welcome-page">
                 <LandingPage/>
             </Route>
-            <Route exact path="/forums/forum/:categoryId(\d+)">
+            <Route exact path="/forums/forum/:categoryId(\d+)-:categoryName/posts">
                 <SingleCategory/>
             </Route>
             <Route exact path="/forums">
@@ -19,6 +20,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/create-profile/:userId(\d+)">
                 <CreateProfile/>
+            </Route>
+            <Route exact path="/forum/posts/:postId(\d+)">
+                <SinglePost/>
             </Route>
         </main>
     </>

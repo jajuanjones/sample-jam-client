@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react"
 import { Post } from "./Post"
 import { getAllPosts } from "./PostManager"
 
-export const PostList = ({post}) => {
+export const PostList = () => {
     const [posts, updatePosts] = useState([])
 
     useEffect(()=>{

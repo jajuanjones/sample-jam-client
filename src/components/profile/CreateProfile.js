@@ -21,7 +21,7 @@ export const CreateProfile = () => {
         createProfile(newProfile).then(history.push(`/profile-page/${userId}`))
     }
 
-    // with the way I have my backend set up on the bio should be a required part of the form correct?
+    // With the way I have my backend set up on the bio should be a required part of the form correct?
     return(
         <>
             <main>

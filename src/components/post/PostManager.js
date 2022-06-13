@@ -1,4 +1,4 @@
-import fetchIt from '../utils/Fetch'
+import { fetchIt } from '../utils/Fetch'
 import { Settings } from '../utils/Settings'
 
 export const getAllPosts = () => {
@@ -7,6 +7,10 @@ export const getAllPosts = () => {
 
 export const getSinglePost = (id) => {
     return fetchIt(`${Settings.API}/posts/${id}`)
+}
+
+export const getPostsOfCategory = (id) => {
+    return fetchIt(`${Settings.API}/category-posts/${id}`)
 }
 
 export const createPost = (newPost) => {
