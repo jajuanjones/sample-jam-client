@@ -4,19 +4,24 @@ import "./NavBar.css"
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Box } from "@mui/system"
-import { Button } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 
 
 export const NavBar = () => {
   const history = useHistory()
   return (
     <nav>
-      <Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+      <Box sx={{display: "flex", flexDirection: "row"}}>
         <Link style={{textDecoration: "none", marginTop: "0.5em"}} to="/forums">
           <HomeOutlinedIcon fontSize="large" 
           sx={{
             color: "black"
           }}/>
+        </Link>
+        <Link style={{textDecoration: "none", marginTop: "0.5em"}} to="/profiles/your-profile">
+          <Typography variant="body1" sx={{fontSize:"1.2em"}}>
+            Profile
+          </Typography>
         </Link>
         {
           localStorage.getItem("auth_token") !== null ?

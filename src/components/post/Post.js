@@ -4,6 +4,8 @@ import { Box } from "@mui/system"
 
 
 export const Post = ({ post, listview }) => {
+    const [editing, setIsEditing] = useState(false)
+
     return (
         <>
             {

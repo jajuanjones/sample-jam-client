@@ -1,35 +1,36 @@
 import { Box, Button, TextField, Typography } from "@mui/material"
 import { useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
-import { createPost } from "./PostManager"
+import { useHistory } from "react-router-dom"
+import { createComment } from "../post/PostManager"
 
-
-export const CreatePostForm = () => {
-    const {categoryId} = useParams()
-    const [post, setPost] = useState({
-        category: categoryId,
-        text: ""
+export const CreateCommentForm = ({ post, refreshPage }) => {
+    const [comment, setComment] = useState({
+        text: "",
+        post: post.id
     })
     const history = useHistory()
 
-    const handleSubmitPost = (e) => {
+    const handleSubmitComment = (e) => {
         e.preventDefault()
-        const newPost = {
-            title: post.title,
-            text: post.text,
-            category: post.category
+        const newComment = {
+            text: comment.text,
+            post: post.id
         }
-        if(newPost.title && newPost.text && newPost.category) {
-            createPost(newPost).then((res)=>history.push(`/forum/posts/${res.id}`))
+        if(newComment.text) {
+            createComment(newComment, post.id).then((res)=>{
+                refreshPage()
+                setComment({text: ""})
+            })
         }
     }
 
     const handleControlledInput = (e) => {
-        const newPost = Object.assign({}, post)
-        newPost[e.target.name] = e.target.value
-        setPost(newPost)
+        const newComment = Object.assign({}, comment)
+        newComment[e.target.name] = e.target.value
+        setComment(newComment)
     }
 
+    // I only want this component to refresh the comment and create components without rerendering the entire page
     return(
         <>
             <Box sx={{
@@ -43,26 +44,10 @@ export const CreatePostForm = () => {
                         size="small"
                         required
                         fullWidth
-                        id="title"
-                        label="Title"
-                        name="title"
-                        value={post.title}
-                        onChange={handleControlledInput}
-                        autoFocus
-                    />
-                </Box>
-                <Box sx={{
-                    height: "20em"
-                }}>
-                    <TextField
-                        margin="normal"
-                        size="small"
-                        required
-                        fullWidth
                         id="text"
-                        label="Text"
+                        label="Enter Comment"
                         name="text"
-                        value={post.text}
+                        value={comment.text}
                         onChange={handleControlledInput}
                         autoFocus
                     />
@@ -79,10 +64,10 @@ export const CreatePostForm = () => {
                         }
                     }}
                     onClick={(e)=>{
-                        handleSubmitPost(e)
+                        handleSubmitComment(e)
                     }}>
                         <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
-                            Post
+                            Comment
                         </Typography>
                     </Button>
                 </Box>
@@ -90,3 +75,6 @@ export const CreatePostForm = () => {
         </>
     )
 }
+
+
+
