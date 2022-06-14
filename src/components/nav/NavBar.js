@@ -11,17 +11,24 @@ export const NavBar = () => {
   const history = useHistory()
   return (
     <nav>
-      <Box sx={{textDecoration: "none"}}>
-        <Link to="/forums">
+      <Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+        <Link style={{textDecoration: "none", marginTop: "0.5em"}} to="/forums">
           <HomeOutlinedIcon fontSize="large" 
           sx={{
-            color: "black",
-            mt: "10px"
+            color: "black"
           }}/>
         </Link>
         {
           localStorage.getItem("auth_token") !== null ?
-            <Button variant="contained" onClick={() => {
+            <Button variant="contained" 
+              sx={{
+                background: "grey",
+                ":hover": {
+                  background: "grey"
+                },
+                mt: "0.5em"
+              }}
+              onClick={() => {
               localStorage.removeItem("auth_token")
               history.push({ pathname: "/welcome-page" })
             }}>

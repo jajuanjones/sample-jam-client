@@ -10,6 +10,10 @@ export const getSingleProfile = (id) => {
     return fetchIt(`${Settings.API}/profiles/${id}`)
 }
 
+export const getMyProfile = () => {
+    return fetchIt(`${Settings.API}/my-profile`)
+}
+
 export const createProfile = (newProfile) => {
     return fetchIt(`${Settings.API}/profiles`, "POST", JSON.stringify(newProfile))
 }

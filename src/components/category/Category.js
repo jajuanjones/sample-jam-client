@@ -11,13 +11,17 @@ export const Category = ({category}) => {
         <>
         {/* Return category label content */}
         {/* Eventually we will want a length of a list of posts with a certain category */}
-        <Box>
+        <Box sx={{
+                m: "1rem",
+                display: "flex",
+                flexDirection: "row"
+                }}>
             <Box sx={{m: "1rem"}}>
                 <ForumIcon/>
             </Box>
-            <Box sx={{m: "1rem"}} key={category.id}>
-                <Link to={`/forums/forum/${category.id}-${category.label}/posts`}>
-                    <Typography variant="body1">{category.label}</Typography>
+            <Box sx={{mt: "1em"}} key={category.id}>
+                <Link style={{textDecoration: "none", color: "black"}} to={`/forums/forum/${category.id}-${category.label}/posts`}>
+                    <Typography variant="subtitle1">{category.label}</Typography>
                 </Link>
             </Box>
         </Box>
