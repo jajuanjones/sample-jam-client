@@ -42,3 +42,11 @@ export const getUserPosts = () => {
 // export const getUserLikedPosts = () => {
 //     return fetchIt(`${Settings.API}/posts/user-liked-posts`)
 // }
+
+export const getPostComments = () => {
+    return fetchIt(`${Settings.API}/posts/post-comments`)
+}
+
+export const createComment = (newComment, id) => {
+    return fetchIt(`${Settings.API}/posts/${id}/comment`, "POST", JSON.stringify(newComment))
+}

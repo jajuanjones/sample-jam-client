@@ -7,6 +7,7 @@ import { LandingPage } from "./landing/LandingPage"
 import { SinglePost } from "./post/SinglePost"
 import { CreatePostForm } from "./post/CreatePost"
 import { MyProfile } from "./profile/MyProfile"
+import { CreateCommentForm } from "./comment/CreateComment"
 
 export const ApplicationViews = () => {
     return <>

@@ -7,7 +7,6 @@ import { Button, Typography } from "@mui/material";
 
 export const SingleCategory = () => {
     const [category, updateCategory] = useState({})
-    const [posts, setPosts] = useState([])
     const [filteredPosts, setFilteredPosts] = useState([])
     const {categoryId} = useParams()
     const history = useHistory()

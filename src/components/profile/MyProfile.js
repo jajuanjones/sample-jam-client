@@ -8,7 +8,6 @@ export const MyProfile = () => {
     const [profile, setMyProfile] = useState({})
 
     useEffect(()=>{
-        debugger
         getMyProfile().then(data=>setMyProfile(data))
     },[])
 

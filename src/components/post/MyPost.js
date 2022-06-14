@@ -17,7 +17,6 @@ export const MyPosts = () => {
                     return <Box>
                                 <PostList listview={true} post={post}/>
                             </Box>
-
                 })
             }
         </>
