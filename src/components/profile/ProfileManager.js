@@ -11,7 +11,7 @@ export const getSingleProfile = (id) => {
 }
 
 export const getMyProfile = () => {
-    return fetchIt(`${Settings.API}/my-profile`)
+    return fetchIt(`${Settings.API}/profiles/my-profile`)
 }
 
 export const createProfile = (newProfile) => {
