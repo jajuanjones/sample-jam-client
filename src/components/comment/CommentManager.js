@@ -13,3 +13,7 @@ export const getSingleComment = (id) => {
 export const editComment = (comment) => {
     return fetchIt(`${Settings.API}/comments/${comment.id}`, "PUT", JSON.stringify(comment))
 }
+
+export const deleteComment = (id) => {
+    return fetchIt(`${Settings.API}/comments/${id}`, "DELETE")
+}

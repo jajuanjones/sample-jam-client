@@ -25,3 +25,7 @@ export const editProfile = (profile) => {
 export const deleteProfile = (id) => {
     return fetchIt(`${Settings.API}/profiles/${id}`, "DELETE")
 }
+
+export const getTagsForProfile = () => {
+    return fetchIt(`${Settings.API}/tags`)
+}
