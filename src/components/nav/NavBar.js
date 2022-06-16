@@ -12,14 +12,14 @@ export const NavBar = () => {
   return (
     <nav>
       <Box sx={{display: "flex", flexDirection: "row"}}>
-        <Link style={{textDecoration: "none", marginTop: "0.5em"}} to="/forums">
+        <Link style={{textDecoration: "none", margin: "0.5em"}} to="/forums">
           <HomeOutlinedIcon fontSize="large" 
           sx={{
             color: "black"
           }}/>
         </Link>
-        <Link style={{textDecoration: "none", marginTop: "0.5em"}} to="/profiles/your-profile">
-          <Typography variant="body1" sx={{fontSize:"1.2em"}}>
+        <Link style={{textDecoration: "none", margin: "0.5em"}} to="/profiles/your-profile">
+          <Typography variant="body1" sx={{fontSize:"1.4em"}}>
             Profile
           </Typography>
         </Link>
@@ -31,7 +31,7 @@ export const NavBar = () => {
                 ":hover": {
                   background: "grey"
                 },
-                mt: "0.5em"
+                margin: "0.5em"
               }}
               onClick={() => {
               localStorage.removeItem("auth_token")
@@ -41,8 +41,17 @@ export const NavBar = () => {
             </Button>
             :
             <>
-              <Link to="/login">
-                <Button variant="contained">Login/Register</Button>
+              <Link to="/login" style={{textDecoration: "none"}}>
+                <Button variant="contained"
+                sx={{
+                  background: "grey",
+                  ":hover": {
+                    background: "grey"
+                  },
+                  margin: "0.5em"
+                }}>
+                  Login/Register
+                </Button>
               </Link>
             </>
         }

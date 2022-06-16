@@ -20,7 +20,10 @@ export const Category = ({category}) => {
                 <ForumIcon/>
             </Box>
             <Box sx={{mt: "1em"}} key={category.id}>
-                <Link style={{textDecoration: "none", color: "black"}} to={`/forums/forum/${category.id}-${category.label}/posts`}>
+                <Link style={{
+                    textDecoration: "none", 
+                    color: "black"}} 
+                    to={`/forums/forum/${category.id}-${category.label}/posts`}>
                     <Typography variant="subtitle1">{category.label}</Typography>
                 </Link>
             </Box>

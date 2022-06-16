@@ -1,33 +1,34 @@
 import { Box, Button, TextField, Typography } from "@mui/material"
-import { useState } from "react"
-import { useHistory } from "react-router-dom"
-import { createComment } from "../post/PostManager"
+import { useEffect, useState } from "react"
+import { editComment, getSingleComment } from "./CommentManager"
 
-export const CreateCommentForm = ({ post, refreshPage }) => {
-    const [comment, setComment] = useState({
-        text: "",
-        post: post.id
-    })
-    const history = useHistory()
+export const UpdateCommentForm = ({ comment, refreshPage, setIsEditing }) => {
+    const [currentComment, setCurrentComment] = useState({})
+
+    useEffect(()=>{
+        if(comment){
+            getSingleComment(comment.id).then(setCurrentComment)
+        }
+    },[])
 
     const handleSubmitComment = (e) => {
         e.preventDefault()
-        const newComment = {
-            text: comment.text,
-            post: post.id
+        const editedComment = {
+            text: currentComment.text,
+            id: currentComment.id
         }
-        if(newComment.text) {
-            createComment(newComment, post.id).then((res)=>{
+        if(editedComment.text) {
+            editComment(editedComment).then(()=>{
+                setIsEditing(false)
                 refreshPage()
-                setComment({text: ""})
             })
         }
     }
 
     const handleControlledInput = (e) => {
-        const newComment = Object.assign({}, comment)
-        newComment[e.target.name] = e.target.value
-        setComment(newComment)
+        const editedComment = Object.assign({}, comment)
+        editedComment[e.target.name] = e.target.value
+        setCurrentComment(editedComment)
     }
 
     // I only want this component to refresh the comment and create components without rerendering the entire page
@@ -42,14 +43,13 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
                     <TextField
                         margin="normal"
                         size="small"
-                        required
                         fullWidth
                         multiline
-                        rows={2}
+                        rows={3}
                         id="text"
-                        label="Enter Comment"
+                        label="Edit Comment"
                         name="text"
-                        value={comment.text}
+                        value={currentComment.text}
                         onChange={handleControlledInput}
                         autoFocus
                     />
@@ -70,7 +70,25 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
                     }}>
                         {/* if comment.text.length is 0 make the button disabled */}
                         <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
-                            Comment
+                            Cancel
+                        </Typography>
+                    </Button>
+                    <Button
+                    sx={{
+                        width: "7rem",
+                        height: "2rem",
+                        color: "white",
+                        backgroundColor: "rgb(22, 211, 22)",
+                        ":hover": {
+                            backgroundColor: "rgb(8, 189, 8)"
+                        }
+                    }}
+                    onClick={(e)=>{
+                        handleSubmitComment(e)
+                    }}>
+                        {/* if comment.text.length is 0 make the button disabled */}
+                        <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                            Save
                         </Typography>
                     </Button>
                 </Box>
@@ -78,6 +96,3 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
         </>
     )
 }
-
-
-

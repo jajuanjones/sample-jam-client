@@ -4,6 +4,7 @@ import { getSingleCategory } from "./CategoryManager";
 import { Box } from "@mui/system";
 import { Post } from "../post/Post";
 import { Button, Typography } from "@mui/material";
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const SingleCategory = () => {
     const [category, updateCategory] = useState({})
@@ -35,6 +36,7 @@ export const SingleCategory = () => {
                     }
                 }}
                 onClick={()=>history.push(`/forum/${category.id}-${category.label}/make-post`)}>
+                    <AssignmentIcon fontSize="small" sx={{paddingRight: 0.5}}/>
                     <Typography variant="body3" sx={{fontSize: "0.7rem"}}>
                         Create a Post
                     </Typography>

@@ -1,52 +1,122 @@
-import React, {useRef} from "react"
+import { Button, Checkbox, TextField, Typography } from "@mui/material"
+import { Box } from "@mui/system"
+import React, {useEffect, useRef, useState} from "react"
 import { useHistory, useParams, Link } from "react-router-dom"
-import { createProfile } from "./ProfileManager"
+import { createProfile, getTagsForProfile } from "./ProfileManager"
 
 export const CreateProfile = () => {
-    const bio = useRef()
-    const profileImg = useRef()
-    const tags = useRef()
-    const history = useHistory()
     const {userId} = useParams()
+    const [listTags, setListTags] = useState([])
+    const [profile, setProfile] = useState({
+        bio: "",
+        profile_img: "",
+        tags: [],
+        user: userId
+    })
+    const history = useHistory()
+
+    useEffect(()=>{
+        getTagsForProfile().then(data=>setListTags(data))
+    },[])
     
     const handleNewProfile = (e) => {
         e.preventDefault()
 
         const newProfile = {
-            "bio": bio.current.value,
-            "profile_img": profileImg.current.value,
-            "tags": tags.current.value
+            bio: profile.bio,
+            profile_img: profile.profile_img,
+            tags: profile.tags
         }
 
-        createProfile(newProfile).then(history.push(`/profile-page/${userId}`))
+        createProfile(newProfile).then(history.push(`/profiles/your-profile`))
     }
 
-    // With the way I have my backend set up on the bio should be a required part of the form correct?
+    const handleControlledInput = (e) => {
+        const newProfile = Object.assign({}, profile)
+        if(e.target.name === 'tags') {
+            if (e.target.checked) {
+                newProfile[e.target.name].push(parseInt(e.target.value))
+            }
+            else {
+                newProfile[e.target.name] = newProfile[e.target.name].filter(tag=>{
+                    return tag !== parseInt(e.target.value)})
+            }
+        }
+        else {
+            newProfile[e.target.name] = e.target.value
+        }
+        setProfile(newProfile)
+    }
+
     return(
         <>
-            <main>
-                <form onSubmit={handleNewProfile}>
-                <h3>Create Your Profile</h3>
-                <fieldset>
-                    <label htmlFor="inputBio"> Tell us about you </label>
-                    <input ref={bio} type="text" name="bio" required />
-                </fieldset>
-                {/* <fieldset>
-                    <label htmlFor="inputPhoto"> Upload a photo </label>
-                    <input ref={profileImg} type="text" name="profileImg" />
-                </fieldset> */}
-                <fieldset>
-                    <label htmlFor="inputTags"> What do you do? </label>
-                    <input ref={tags} type="checkboxes" name="tags" />
-                </fieldset>
-                <fieldset>
-                    <button type="submit">Create</button>
-                </fieldset>
-                </form>
-                <section>
-                Want to skip this step? <Link to="/forums">Visit forum</Link>
-                </section>
-            </main>
+            {/* later we will add a way to upload images */}
+            <Box sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    mt: "2rem",
+                    width: "100%"
+                }}>
+                <Typography variant="h5" sx={{fontWeight: "bold"}}>Fill out your profile</Typography>
+                <Box sx={{}}>
+                    <TextField
+                        margin="normal"
+                        size="small"
+                        id="bio"
+                        fullWidth
+                        multiline
+                        rows={5}
+                        label="Tell us about you..."
+                        name="bio"
+                        value={profile.bio}
+                        onChange={handleControlledInput}
+                        autoFocus
+                    />
+                </Box>
+                <Box>
+                    <Typography variant="subtitle1">Select your tag(s)</Typography>
+                    {
+                        listTags.map(tag=>{
+                            return <>
+                                <Typography variant="body2">{tag.label}</Typography>
+                            <Box sx={{
+
+                                }}>
+                                <Checkbox
+                                value={tag.id}
+                                onChange={handleControlledInput}
+                                name="tags"
+                                checked={
+                                    profile.tags.includes(tag.id)
+                                }
+                                label={tag.label}/>
+                            </Box>
+                            </>
+                        })
+                    }
+                </Box>
+                <Box>
+                    <Button
+                    sx={{
+                        width: "7rem",
+                        height: "2rem",
+                        color: "white",
+                        backgroundColor: "rgb(22, 211, 22)",
+                        ":hover": {
+                            backgroundColor: "rgb(8, 189, 8)"
+                        }
+                    }}
+                    onClick={(e)=>{
+                        handleNewProfile(e)
+                    }}>
+                        <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                            Submit
+                        </Typography>
+                    </Button>
+                </Box>
+            </Box>
         </>
     )
 }
