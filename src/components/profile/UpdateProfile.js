@@ -24,6 +24,7 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
 
     useEffect(()=>{
         getTagsForProfile().then(setListTags)
+        profile.tags = profile.tags.map(t=>t.id)
     },[])
 
     const handleEditProfile = (e) => {
