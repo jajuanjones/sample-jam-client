@@ -91,22 +91,22 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                         myView
                             ? 
                                 <Box>
-                                {
-                                    showEditModal
-                                        ?
-                                            <UpdateProfileForm
-                                                setShowEditModal={setShowEditModal}
-                                                profile={profile}
-                                                refreshProfilePage={refreshProfilePage}
-                                                setMyProfile={setMyProfile}/>
-                                        :
-                                        ""
-                                }
+                                    {
+                                        showEditModal
+                                            ?
+                                                <UpdateProfileForm
+                                                    setShowEditModal={setShowEditModal}
+                                                    profile={profile}
+                                                    refreshProfilePage={refreshProfilePage}
+                                                    setMyProfile={setMyProfile}/>
+                                            :
+                                            ""
+                                    }
                                 <Box sx={{
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
-                                    width: "70%"
+                                    
                                 }}>
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                         <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example">
@@ -116,9 +116,15 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                                     </Box>
                                     <Box>
                                         <TabPanel value={tabValue} index={0}>
-                                            <Button>
-                                                <EditRoundedIcon fontSize="small" onClick={()=>setShowEditModal(true)}/>
-                                            </Button>
+                                            <Box sx={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                justifyContent: "flex-end"
+                                            }}>
+                                                <Button>
+                                                    <EditRoundedIcon fontSize="small" onClick={()=>setShowEditModal(true)}/>
+                                                </Button>
+                                            </Box>
                                             <Typography>
                                                 {profile.user?.username}
                                             </Typography>

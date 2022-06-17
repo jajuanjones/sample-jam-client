@@ -77,25 +77,27 @@ export const CreateProfile = () => {
                 </Box>
                 <Box>
                     <Typography variant="subtitle1">Select your tag(s)</Typography>
-                    {
-                        listTags.map(tag=>{
-                            return <>
-                                <Typography variant="body2">{tag.label}</Typography>
-                            <Box sx={{
-
-                                }}>
-                                <Checkbox
-                                value={tag.id}
-                                onChange={handleControlledInput}
-                                name="tags"
-                                checked={
-                                    profile.tags.includes(tag.id)
-                                }
-                                label={tag.label}/>
-                            </Box>
-                            </>
-                        })
-                    }
+                    <Box sx={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(3, 1fr)"
+                    }}>
+                        {
+                            listTags.map(tag=>{
+                                return <>
+                                <Box>
+                                    <Typography variant="body2" sx={{fontSize: 12}}>{tag.label}</Typography>
+                                    <Checkbox
+                                    value={tag.id}
+                                    onChange={handleControlledInput}
+                                    name="tags"
+                                    checked={
+                                        profile.tags.includes(tag.id)
+                                    }/>
+                                </Box>
+                                </>
+                            })
+                        }
+                    </Box>
                 </Box>
                 <Box>
                     <Button
