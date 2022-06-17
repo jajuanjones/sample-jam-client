@@ -46,7 +46,6 @@ function a11yProps(index) {
 
 export const Profile = ({listView, myView, profile, refreshProfilePage, setMyProfile}) => {
     const [showEditModal, setShowEditModal] = useState(false)
-    const [showAlert, setShowAlert] = useState(0)
     const [tabValue, setTabValue] = useState(0)
 
     const handleChange = (e, newValue) => {

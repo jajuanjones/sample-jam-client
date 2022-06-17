@@ -18,8 +18,9 @@ const style = {
     p: 4,
 }
 
-export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile, setMyProfile, showAlert, setShowAlert}) => {
+export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile, setMyProfile}) => {
     const [listTags, setListTags] = useState([])
+    const [showAlert, setShowAlert] = useState(0)
 
     useEffect(()=>{
         getTagsForProfile().then(setListTags)
@@ -62,9 +63,10 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
         <>
             {/* later we will add a way to upload images */}
             {
-                showAlert != -1 ? <NotifyDeleteProfile
+                showAlert != 0 ? <NotifyDeleteProfile
                     setShowAlert={setShowAlert}
-                    showAlert={showAlert}/>
+                    showAlert={showAlert}
+                    user={profile.user}/>
                 : ""
             }
             <Box sx={style}>
@@ -119,14 +121,12 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
                             height: "2rem",
                             margin: "0 auto",
                             color: "white",
-                            backgroundColor: "rgb(22, 211, 22)",
+                            backgroundColor: "rgb(155, 20, 20)",
                             ":hover": {
-                                backgroundColor: "rgb(8, 189, 8)"
+                                backgroundColor: "rgb(134, 17, 17)"
                             }
                         }}
-                        onClick={(e)=>{
-                            setShowAlert(profile.id)
-                        }}>
+                        onClick={()=>setShowAlert(profile.id)}>
                             <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
                                 Delete
                             </Typography>

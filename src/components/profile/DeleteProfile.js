@@ -1,20 +1,21 @@
 import { Box, Button, Typography } from "@mui/material"
 import { useHistory } from "react-router-dom"
-import { deleteProfile } from "./ProfileManager"
+import { deleteProfile, deleteUser } from "./ProfileManager"
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 410,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    "z-index": 1
 }
 
-export const NotifyDeleteProfile = ({showAlert, setShowAlert}) => {
+export const NotifyDeleteProfile = ({showAlert, setShowAlert, user}) => {
     const history = useHistory()
     return(
         <>
@@ -31,9 +32,12 @@ export const NotifyDeleteProfile = ({showAlert, setShowAlert}) => {
                     </Box>
                     <Box>
                         {
-                            showAlert != -1 ? <><Button onClick={()=>{
-                                deleteProfile(showAlert).then(()=>{
+                            showAlert != 0 ? <><Button onClick={()=>{
+                                deleteProfile(showAlert)
+                                .then(deleteUser(user.id))
+                                .then(()=>{
                                 setShowAlert(0)
+                                localStorage.removeItem("auth_token")
                                 history.push("/")
                                 })
                                 }}>Delete</Button>
