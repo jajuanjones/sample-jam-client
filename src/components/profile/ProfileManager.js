@@ -29,3 +29,11 @@ export const deleteProfile = (id) => {
 export const getTagsForProfile = () => {
     return fetchIt(`${Settings.API}/tags`)
 }
+// Extra methods specific to user
+export const getSingleUser = (id) => {
+    return fetchIt(`${Settings.API}/users/${id}`)
+}
+
+export const deleteUser = (id) => {
+    return fetchIt(`${Settings.API}/users/${id}`, "DELETE")
+}

@@ -61,7 +61,8 @@ export const UpdatePostForm = ({setIsEditing, refreshPage, setPost, post}) => {
                             }
                         }}
                         onClick={(e)=>{
-                            handleSubmitPost(e)
+                            setIsEditing(false)
+                            refreshPage()
                         }}>
                             <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
                                 Cancel

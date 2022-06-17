@@ -66,7 +66,8 @@ export const UpdateCommentForm = ({ comment, refreshPage, setIsEditing }) => {
                         }
                     }}
                     onClick={(e)=>{
-                        handleSubmitComment(e)
+                        setIsEditing(false)
+                        refreshPage()
                     }}>
                         {/* if comment.text.length is 0 make the button disabled */}
                         <Typography variant="body3" sx={{fontSize: "0.8rem"}}>

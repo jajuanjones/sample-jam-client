@@ -11,10 +11,17 @@ export const MyProfile = () => {
         getMyProfile().then(data=>setMyProfile(data))
     },[])
 
+    const refreshProfilePage = () => {
+        getMyProfile().then(setMyProfile)
+    }
+
     return(
         <>
             <Box>
-                <Profile listView={false} myView={true} profile={profile}/>
+                <Profile
+                    listView={false} myView={true}
+                    profile={profile} refreshProfilePage={refreshProfilePage}
+                    setMyProfile={setMyProfile}/>
             </Box>
         </>
     )
