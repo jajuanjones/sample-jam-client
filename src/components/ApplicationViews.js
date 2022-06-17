@@ -8,6 +8,7 @@ import { SinglePost } from "./post/SinglePost"
 import { CreatePostForm } from "./post/CreatePost"
 import { MyProfile } from "./profile/MyProfile"
 import { CreateCommentForm } from "./comment/CreateComment"
+import { UserProfile } from "./profile/UserProfile"
 
 export const ApplicationViews = () => {
     return <>
@@ -32,6 +33,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/profiles/your-profile">
                 <MyProfile/>
+            </Route>
+            <Route exact path="/profiles/:profileId(\d+)-:profileName">
+                <UserProfile/>
             </Route>
         </main>
     </>

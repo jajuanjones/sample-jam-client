@@ -1,6 +1,7 @@
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { MyProfile } from "./MyProfile"
 import { Profile } from "./Profile"
 import { getSingleProfile } from "./ProfileManager"
 
@@ -16,7 +17,18 @@ export const UserProfile = () => {
     return(
         <>
             <Box>
-                <Profile listView={false} myView={false} profile={profile}/>
+                {
+                    profile.is_my_profile
+                        ?
+                            <Box>
+                                <MyProfile/>
+                            </Box>
+                        :
+                            <Box>
+                                <Profile listView={false} myView={false} profile={profile}/>
+                            </Box>
+
+                }
             </Box>
         </>
     )

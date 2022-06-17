@@ -20,7 +20,7 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                 listview && post
                     ?
                     <Box>
-                        <Profile listView={false} myView={false} profile={post.profile}/>
+                        <Profile listView={true} myView={false} profile={post.profile}/>
                         <Link to={`/forum/posts/${post.id}`}
                             style={{
                                 textDecoration: "none",

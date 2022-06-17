@@ -1,6 +1,7 @@
 import { Button, Checkbox, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react"
+import { NotifyDeleteProfile } from "./DeleteProfile"
 import { editProfile, getTagsForProfile } from "./ProfileManager"
 
 
@@ -17,7 +18,7 @@ const style = {
     p: 4,
 }
 
-export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile, setMyProfile}) => {
+export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile, setMyProfile, showAlert, setShowAlert}) => {
     const [listTags, setListTags] = useState([])
 
     useEffect(()=>{
@@ -60,6 +61,12 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
     return(
         <>
             {/* later we will add a way to upload images */}
+            {
+                showAlert != -1 ? <NotifyDeleteProfile
+                    setShowAlert={setShowAlert}
+                    showAlert={showAlert}/>
+                : ""
+            }
             <Box sx={style}>
                 <Typography variant="h5" sx={{fontWeight: "bold"}}>Edit your profile</Typography>
                 <Box sx={{}}>
@@ -106,6 +113,24 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
                         flexDirection: "row",
                         justifyContent: "flex-end"
                     }}>
+                        <Button
+                        sx={{
+                            width: "7rem",
+                            height: "2rem",
+                            margin: "0 auto",
+                            color: "white",
+                            backgroundColor: "rgb(22, 211, 22)",
+                            ":hover": {
+                                backgroundColor: "rgb(8, 189, 8)"
+                            }
+                        }}
+                        onClick={(e)=>{
+                            setShowAlert(profile.id)
+                        }}>
+                            <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                                Delete
+                            </Typography>
+                        </Button>
                     <Box>
                         <Button
                         sx={{

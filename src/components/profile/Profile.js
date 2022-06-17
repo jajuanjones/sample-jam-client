@@ -111,7 +111,7 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                         <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example">
                                             <Tab label="User Info" {...a11yProps(0)} />
-                                            <Tab label="Posts" {...a11yProps(1)} />
+                                            <Tab label="My Posts" {...a11yProps(1)} />
                                         </Tabs>
                                     </Box>
                                     <Box>
@@ -169,8 +169,71 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                                             }
                                         </TabPanel>
                                     </Box>
+                                    </Box>
                                 </Box>
+                            :
+                            profile ?               
+                            <Box>
+                                <Box sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    
+                                }}>
+                                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                        <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example">
+                                            <Tab label="User Info" {...a11yProps(0)} />
+                                            <Tab label="Posts" {...a11yProps(1)} />
+                                        </Tabs>
+                                    </Box>
+                                    <Box>
+                                        <TabPanel value={tabValue} index={0}>
+                                            <Typography>
+                                                {profile.user?.username}
+                                            </Typography>
+                                            <Typography>
+                                                {profile.user?.first_name}
+                                            </Typography>
+                                            <Typography>
+                                                {profile.user?.last_name}
+                                            </Typography>
+                                            <Typography>
+                                                {profile.user?.email}
+                                            </Typography>
+                                            <Typography>
+                                                {profile.bio}
+                                            </Typography>
+                                            {
+                                                profile.tags?.map(tag=>{
+                                                    return <Typography>
+                                                        {tag.label}
+                                                    </Typography>
+                                                })
+                                            }
+                                        </TabPanel>
+                                    </Box>
+                                    <Box>
+                                        <TabPanel value={tabValue} index={1}>
+                                            {
+                                                profile.posts?.map(post=>{
+                                                    return <Box>
+                                                                <Link to={`/forum/posts/${post.id}`}
+                                                                    style={{
+                                                                        textDecoration: "none",
+                                                                        color: "black",
+                                                                        ":visited": {
+                                                                            color: "black"
+                                                                        }
+                                                                    }}>
+                                                                    <Post listView={false} post={post}/>
+                                                                </Link>
+                                                            </Box>
+                                                })
+                                            }
+                                        </TabPanel>
+                                    </Box>
                                 </Box>
+                            </Box>
                             : ""
             }
         </>
