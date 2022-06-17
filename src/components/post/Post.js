@@ -1,8 +1,7 @@
 import { Button, Typography } from "@mui/material"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Box } from "@mui/system"
-import { useEffect, useState } from "react"
-import { getMyProfile, getSingleProfile } from "../profile/ProfileManager"
+import { useState } from "react"
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import { DeleteRounded } from "@mui/icons-material"
 import { Profile } from "../profile/Profile"

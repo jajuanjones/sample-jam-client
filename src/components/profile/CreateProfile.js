@@ -59,7 +59,7 @@ export const CreateProfile = () => {
                     mt: "2rem",
                     width: "100%"
                 }}>
-                <Typography variant="h5" sx={{fontWeight: "bold"}}>Fill out your profile</Typography>
+                <Typography variant="h5" sx={{fontWeight: "bold"}}>Complete your profile</Typography>
                 <Box sx={{}}>
                     <TextField
                         margin="normal"

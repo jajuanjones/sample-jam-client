@@ -21,13 +21,13 @@ export const NotifyDeleteProfile = ({showAlert, setShowAlert, deleteProfile}) =>
                         {
                             showAlert != -1 ? <><Button onClick={()=>{
                                 deleteProfile(showAlert).then(()=>{
-                                setShowAlert(-1)
+                                setShowAlert(0)
                                 history.push("/forums")
                                 })
                                 }}>Delete</Button>
                             <Button onClick={()=>setShowAlert(0)}>Cancel</Button></>
                             :
-                            <Button onClick={()=>setShowAlert(0)}>Close</Button>
+                            ""
                         }
                     </Box>
                 </Box>

@@ -1,4 +1,4 @@
-import { Avatar, Typography } from "@mui/material"
+import { Avatar, Button, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Post } from "../post/Post";
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import { UpdateProfileForm } from "./UpdateProfile";
 
 
 function TabPanel(props) {
@@ -42,8 +44,9 @@ function a11yProps(index) {
 }
 
 
-export const Profile = ({listView, myView, profile}) => {
-    const [showModal, setShowModal] = useState(false)
+export const Profile = ({listView, myView, profile, refreshProfilePage, setMyProfile}) => {
+    const [showEditModal, setShowEditModal] = useState(false)
+    const [showAlert, setShowAlert] = useState(0)
     const [tabValue, setTabValue] = useState(0)
 
     const handleChange = (e, newValue) => {
@@ -87,6 +90,18 @@ export const Profile = ({listView, myView, profile}) => {
                     :
                         myView
                             ? 
+                                <Box>
+                                {
+                                    showEditModal
+                                        ?
+                                            <UpdateProfileForm
+                                                setShowEditModal={setShowEditModal}
+                                                profile={profile}
+                                                refreshProfilePage={refreshProfilePage}
+                                                setMyProfile={setMyProfile}/>
+                                        :
+                                        ""
+                                }
                                 <Box sx={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -96,11 +111,14 @@ export const Profile = ({listView, myView, profile}) => {
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                         <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example">
                                             <Tab label="User Info" {...a11yProps(0)} />
-                                            <Tab label="Your Posts" {...a11yProps(1)} />
+                                            <Tab label="Posts" {...a11yProps(1)} />
                                         </Tabs>
                                     </Box>
                                     <Box>
                                         <TabPanel value={tabValue} index={0}>
+                                            <Button>
+                                                <EditRoundedIcon fontSize="small" onClick={()=>setShowEditModal(true)}/>
+                                            </Button>
                                             <Typography>
                                                 {profile.user?.username}
                                             </Typography>
@@ -113,6 +131,16 @@ export const Profile = ({listView, myView, profile}) => {
                                             <Typography>
                                                 {profile.user?.email}
                                             </Typography>
+                                            <Typography>
+                                                {profile.bio}
+                                            </Typography>
+                                            {
+                                                profile.tags?.map(tag=>{
+                                                    return <Typography>
+                                                        {tag.label}
+                                                    </Typography>
+                                                })
+                                            }
                                         </TabPanel>
                                     </Box>
                                     <Box>
@@ -135,6 +163,7 @@ export const Profile = ({listView, myView, profile}) => {
                                             }
                                         </TabPanel>
                                     </Box>
+                                </Box>
                                 </Box>
                             : ""
             }
