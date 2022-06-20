@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import { Post } from "../post/Post";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import { UpdateProfileForm } from "./UpdateProfile";
+import { Settings } from "../utils/Settings";
 
 
 function TabPanel(props) {
@@ -72,7 +73,9 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                                     onClick={setListViewFalse}>
                                 {profile.profile_img != null
                                     ?
-                                        profile.profile_img : <Avatar sx={{width: 30, height: 30}}/>}
+                                        <Avatar src={`${Settings.API}${profile.profile_img}`}/>
+                                    :
+                                        <Avatar sx={{width: 30, height: 30}}/>}
                                     <Typography variant="subtitle1">
                                         {profile.user?.username}
                                     </Typography>

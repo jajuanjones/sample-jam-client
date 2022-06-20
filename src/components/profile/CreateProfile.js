@@ -100,6 +100,11 @@ export const CreateProfile = () => {
                     </Box>
                 </Box>
                 <Box>
+                    <Link to="/forums" onClick={(e)=>handleNewProfile(e)}>
+                        <Typography>
+                            Want to skip this step? Visit the forum.
+                        </Typography>
+                    </Link>
                     <Button
                     sx={{
                         width: "7rem",

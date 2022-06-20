@@ -34,6 +34,7 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                         </Link>
                     </Box> 
                     :
+                    post ?
                     <Box>
                         {
                             showAlert != 0 ? <NotifyOnClickDelete
@@ -67,10 +68,10 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                                             ?
                                                 <Box>
                                                     <Button onClick={()=>setIsEditing(true)}>
-                                                        <EditRoundedIcon fontSize="small"/>
+                                                        <EditRoundedIcon sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                     </Button>
                                                     <Button onClick={()=>setShowAlert(post.id)}>
-                                                        <DeleteRounded fontSize="small"/>
+                                                        <DeleteRounded sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                     </Button>
                                                    </Box> 
                                             : ""
@@ -78,6 +79,7 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                                 </Box>
                         }
                     </Box>
+                    : "No Post"
             }
         </>
     )

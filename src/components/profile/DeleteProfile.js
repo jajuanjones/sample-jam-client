@@ -12,7 +12,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    "z-index": 1
+    "z-index": 2
 }
 
 export const NotifyDeleteProfile = ({showAlert, setShowAlert, user}) => {
