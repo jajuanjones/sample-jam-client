@@ -4,14 +4,15 @@ import "./NavBar.css"
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Box } from "@mui/system"
-import { Button, Typography } from "@mui/material"
+import { Avatar, Button, Typography } from "@mui/material"
 
 
 export const NavBar = () => {
   const history = useHistory()
   return (
     <nav>
-      <Box sx={{display: "flex", flexDirection: "row"}}>
+      <Box sx={{display: "flex", flexDirection: "row", justifyContent: "flex-end"}}>
+        {/* <Avatar/> */}
         <Link style={{textDecoration: "none", margin: "0.5em"}} to="/forums">
           <HomeOutlinedIcon fontSize="large" 
           sx={{

@@ -9,6 +9,7 @@ import { CreatePostForm } from "./post/CreatePost"
 import { MyProfile } from "./profile/MyProfile"
 import { CreateCommentForm } from "./comment/CreateComment"
 import { UserProfile } from "./profile/UserProfile"
+import { UploadMusic } from "./music/UploadMusic"
 
 export const ApplicationViews = () => {
     return <>
@@ -36,6 +37,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/profiles/:profileId(\d+)-:profileName">
                 <UserProfile/>
+            </Route>
+            <Route exact path="/upload-your-music">
+                <UploadMusic/>
             </Route>
         </main>
     </>

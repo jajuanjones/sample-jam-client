@@ -13,15 +13,22 @@ export const CategoryList = () => {
 
     return(
         <>
-            {
-                categories.map(category=>{
-                    return <Box key={category.id}>
-                                <Box>
-                                    <Category category={category}/>
+            <Box
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                mt: "3rem"
+            }}>
+                {
+                    categories.map(category=>{
+                        return <Box sx={{margin: "0 auto"}} key={category.id}>
+                                    <Box >
+                                        <Category category={category}/>
+                                    </Box>
                                 </Box>
-                            </Box>
-                })
-            }
+                    })
+                }
+            </Box>
         </>
     )
 }

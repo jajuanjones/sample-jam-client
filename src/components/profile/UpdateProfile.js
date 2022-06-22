@@ -1,9 +1,9 @@
-import { Button, Checkbox, TextField, Typography, Avatar } from "@mui/material"
+import { Button, Checkbox, TextField, Typography, Avatar, Grid } from "@mui/material"
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react"
 import { Settings } from "../utils/Settings"
 import { NotifyDeleteProfile } from "./DeleteProfile"
-import { editProfile, getTagsForProfile } from "./ProfileManager"
+import { editProfile, editUser, getTagsForProfile } from "./ProfileManager"
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 
 
@@ -13,12 +13,13 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    height: "fit-content",
+    height: "70%",
     bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    "z-index": 1
+    "z-index": 1,
+    overflow: "auto"
 }
 
 export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile, setMyProfile}) => {
@@ -44,10 +45,13 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
             username: profile.user.username,
             first_name: profile.user.first_name,
             last_name: profile.user.last_name,
-            email: profile.user.email
+            email: profile.user.email,
+            id: profile.user.id
         }
 
-        editProfile(editedProfile).then(()=>{
+        editProfile(editedProfile)
+        .then(editUser(editedUser))
+        .then(()=>{
             setShowEditModal(false)
             refreshProfilePage()
         })
@@ -105,7 +109,7 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
                                 profile.profile_img != null
                                     ?
                                         <Box>
-                                            <Avatar src={`${Settings.API}${profile.profile_img}`}
+                                            <Avatar src={`${profile.profile_img}`}
                                                 sx={{width: 250, height: 250, margin: "0 auto"}}/>
                                             <Box>
                                                 <Button
@@ -118,7 +122,7 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
                                                         backgroundColor: "rgb(168, 168, 168)"
                                                     }
                                                 }}>
-                                                    <CameraAltOutlinedIcon fontSize="small" sx={{paddingRight: 0.5}}/>
+                                                    <CameraAltOutlinedIcon fontSize="small" sx={{paddingRight: 0.5, color: "black"}}/>
                                                     <Typography sx={{color: "black", fontSize: 13}}>
                                                         Upload image
                                                         </Typography>
@@ -153,6 +157,53 @@ export const UpdateProfileForm= ({setShowEditModal, refreshProfilePage, profile,
                             }
                         </Box>
                     </Box>
+                    <Grid container spacing={2} sx={{mt: 1}}>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                            autoComplete="given-name"
+                            name="first_name"
+                            fullWidth
+                            size="small"
+                            id="first_name"
+                            label="First Name"
+                            value={profile.user.first_name}
+                            autoFocus
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                            fullWidth
+                            size="small"
+                            id="last_name"
+                            label="Last Name"
+                            value={profile.user.last_name}
+                            name="last_name"
+                            autoComplete="family-name"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                            fullWidth
+                            size="small"
+                            id="username"
+                            label="Username"
+                            value={profile.user.username}
+                            name="username"
+                            autoComplete="email"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                            fullWidth
+                            size="small"
+                            id="email"
+                            label="Email Address"
+                            value={profile.user.email}
+                            name="email"
+                            autoComplete="email"
+                            />
+                        </Grid>
+                    </Grid>
                     <Box sx={{}}>
                         <TextField
                             margin="normal"

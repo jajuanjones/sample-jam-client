@@ -42,7 +42,7 @@ export const SingleCategory = () => {
                     </Typography>
                 </Button>
             </Box>
-            <Box>
+            <Box sx={{mt: "5rem"}}>
                 {
                     filteredPosts.map(post => {
                         return <Box key={post.id}>

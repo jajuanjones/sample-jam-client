@@ -1,6 +1,6 @@
 import { Button, Checkbox, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import React, {useEffect, useRef, useState} from "react"
+import React, {useEffect, useState} from "react"
 import { useHistory, useParams, Link } from "react-router-dom"
 import { createProfile, getTagsForProfile } from "./ProfileManager"
 

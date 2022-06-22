@@ -2,12 +2,13 @@ import { Button, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import { Box } from "@mui/system"
 import { useState } from "react"
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded'
 import { DeleteRounded } from "@mui/icons-material"
 import { Profile } from "../profile/Profile"
 import { UpdatePostForm } from "./UpdatePost"
 import { deletePost } from "./PostManager"
 import { NotifyOnClickDelete } from "../utils/NotifyDelete"
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 
 
 export const Post = ({ post, listview, refreshPage, setPost }) => {
@@ -19,23 +20,39 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
             {
                 listview && post
                     ?
-                    <Box>
-                        <Profile listView={true} myView={false} profile={post.profile}/>
-                        <Link to={`/forum/posts/${post.id}`}
-                            style={{
-                                textDecoration: "none",
-                                ":hover": {
-                                    textDecoration: "underline"
-                                }
-                            }}>
-                            <Typography variant="h6">
-                                {post.title}
-                            </Typography>
-                        </Link>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        m: "1rem auto",
+                        width: "80%",
+                        border: 1,
+                        padding: 1,
+                        borderRadius: 1
+                        }}>
+                        <Box>
+                            <Profile listView={true} myView={false} profile={post.profile}/>
+                        </Box>
+                        <Box>
+                            <Link to={`/forum/posts/${post.id}`}
+                                style={{
+                                    textDecoration: "none",
+                                    ":hover": {
+                                        textDecoration: "underline"
+                                    }
+                                }}>
+                                <Typography variant="h6">
+                                    {post.title}
+                                </Typography>
+                            </Link>
+                        </Box>
                     </Box> 
                     :
                     post ?
-                    <Box>
+                    <Box sx={{
+                        width: "100%",
+                        m: "0 auto"
+                    }}>
                         {
                             showAlert != 0 ? <NotifyOnClickDelete
                                 showAlert={showAlert}
@@ -63,19 +80,28 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                                     <Typography variant="body2">
                                         {post.text}
                                     </Typography>
+                                    <Box sx={{display: "flex", flexDirection: "row"}}>
+                                        <ChatBubbleOutlineIcon sx ={{mt: 1, color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
+                                        <Typography variant="body2" sx={{
+                                            fontSize: 10,
+                                            paddingLeft: 1,
+                                            paddingTop: 1.3,
+                                            color: "rgba(145, 145, 145, 0.705)"
+                                            }}>{post.comment_count} Comments</Typography>
                                     {
                                         post.is_my_post 
                                             ?
-                                                <Box>
+                                                <>
                                                     <Button onClick={()=>setIsEditing(true)}>
                                                         <EditRoundedIcon sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                     </Button>
                                                     <Button onClick={()=>setShowAlert(post.id)}>
                                                         <DeleteRounded sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                     </Button>
-                                                   </Box> 
+                                                </> 
                                             : ""
                                     }
+                                    </Box>
                                 </Box>
                         }
                     </Box>
