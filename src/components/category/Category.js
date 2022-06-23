@@ -12,9 +12,10 @@ export const Category = ({category}) => {
         {/* Return category label content */}
         {/* Eventually we will want a length of a list of posts with a certain category */}
         <Box sx={{
-                m: "1rem",
                 display: "flex",
-                flexDirection: "row"
+                flexDirection: "row",
+                margin: "1rem",
+                width: "213px"
                 }}>
             <Box sx={{m: "1rem"}}>
                 <ForumIcon/>

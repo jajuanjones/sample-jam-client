@@ -4,21 +4,22 @@ import "./NavBar.css"
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Box } from "@mui/system"
-import { Button, Typography } from "@mui/material"
+import { Avatar, Button, Typography } from "@mui/material"
 
 
 export const NavBar = () => {
   const history = useHistory()
   return (
     <nav>
-      <Box sx={{display: "flex", flexDirection: "row"}}>
+      <Box sx={{display: "flex", flexDirection: "row", justifyContent: "flex-end"}}>
+        {/* <Avatar/> */}
         <Link style={{textDecoration: "none", margin: "0.5em"}} to="/forums">
           <HomeOutlinedIcon fontSize="large" 
           sx={{
             color: "black"
           }}/>
         </Link>
-        <Link style={{textDecoration: "none", margin: "0.5em"}} to="/profiles/your-profile">
+        <Link style={{textDecoration: "none", color: "black", margin: "0.5em"}} to="/profiles/your-profile">
           <Typography variant="body1" sx={{fontSize:"1.4em"}}>
             Profile
           </Typography>
@@ -34,7 +35,7 @@ export const NavBar = () => {
                 margin: "0.5em"
               }}
               onClick={() => {
-              localStorage.removeItem("auth_token")
+              localStorage.clear()
               history.push({ pathname: "/welcome-page" })
             }}>
               Logout

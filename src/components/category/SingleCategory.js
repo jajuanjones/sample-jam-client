@@ -25,24 +25,26 @@ export const SingleCategory = () => {
     return(
         <>
             <Box>
-                <Button variant="contained"
-                sx={{
-                    width: "9rem",
-                    height: "1.5rem",
-                    color: "white",
-                    backgroundColor: "rgb(22, 211, 22)",
-                    ":hover": {
-                        backgroundColor: "rgb(8, 189, 8)"
-                    }
-                }}
-                onClick={()=>history.push(`/forum/${category.id}-${category.label}/make-post`)}>
-                    <AssignmentIcon fontSize="small" sx={{paddingRight: 0.5}}/>
-                    <Typography variant="body3" sx={{fontSize: "0.7rem"}}>
-                        Create a Post
-                    </Typography>
-                </Button>
+                <Box sx={{display: "flex", justifyContent: "flex-end", mt: 5, mr: 5}}>
+                    <Button variant="contained"
+                    sx={{
+                        width: "9rem",
+                        height: "1.5rem",
+                        color: "white",
+                        backgroundColor: "rgb(22, 211, 22)",
+                        ":hover": {
+                            backgroundColor: "rgb(8, 189, 8)"
+                        }
+                    }}
+                    onClick={()=>history.push(`/forum/${category.id}-${category.label}/make-post`)}>
+                        <AssignmentIcon fontSize="small" sx={{paddingRight: 0.5}}/>
+                        <Typography variant="body3" sx={{fontSize: "0.7rem"}}>
+                            Create a Post
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
-            <Box>
+            <Box sx={{mt: "3rem"}}>
                 {
                     filteredPosts.map(post => {
                         return <Box key={post.id}>

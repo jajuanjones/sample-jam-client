@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { editComment, getSingleComment } from "./CommentManager"
 
 export const UpdateCommentForm = ({ comment, refreshPage, setIsEditing }) => {
-    const [currentComment, setCurrentComment] = useState({})
+    const [currentComment, setCurrentComment] = useState({text: ""})
 
     useEffect(()=>{
         if(comment){
@@ -54,44 +54,66 @@ export const UpdateCommentForm = ({ comment, refreshPage, setIsEditing }) => {
                         autoFocus
                     />
                 </Box>
-                <Box>
+                <Box sx={{display: "flex", justifyContent: "flex-end"}}>
                     <Button
+                    variant="text"
                     sx={{
                         width: "7rem",
                         height: "2rem",
-                        color: "white",
-                        backgroundColor: "rgb(22, 211, 22)",
+                        color: "black",
                         ":hover": {
-                            backgroundColor: "rgb(8, 189, 8)"
-                        }
+                            backgroundColor: "rgb(22, 211, 22)"
+                        },
+                        mr: 1
                     }}
                     onClick={(e)=>{
                         setIsEditing(false)
                         refreshPage()
                     }}>
                         {/* if comment.text.length is 0 make the button disabled */}
-                        <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                        <Typography variant="body2" sx={{fontSize: "0.9rem"}}>
                             Cancel
                         </Typography>
                     </Button>
-                    <Button
-                    sx={{
-                        width: "7rem",
-                        height: "2rem",
-                        color: "white",
-                        backgroundColor: "rgb(22, 211, 22)",
-                        ":hover": {
-                            backgroundColor: "rgb(8, 189, 8)"
-                        }
-                    }}
-                    onClick={(e)=>{
-                        handleSubmitComment(e)
-                    }}>
-                        {/* if comment.text.length is 0 make the button disabled */}
-                        <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
-                            Save
-                        </Typography>
-                    </Button>
+                    {
+                        currentComment?.text.length == comment.text.length
+                            ?
+                                <Button
+                                sx={{
+                                    width: "7rem",
+                                    height: "2rem",
+                                    color: "white",
+                                    backgroundColor: "rgb(22, 211, 22)",
+                                    ":hover": {
+                                        backgroundColor: "rgb(8, 189, 8)"
+                                    }
+                                }}
+                                disabled>
+                                    {/* if comment.text.length is 0 make the button disabled */}
+                                    <Typography variant="body2" sx={{fontSize: "0.9rem"}}>
+                                        Save
+                                    </Typography>
+                                </Button>
+                            :
+                                <Button
+                                sx={{
+                                    width: "7rem",
+                                    height: "2rem",
+                                    color: "white",
+                                    backgroundColor: "rgb(22, 211, 22)",
+                                    ":hover": {
+                                        backgroundColor: "rgb(8, 189, 8)"
+                                    }
+                                }}
+                                onClick={(e)=>{
+                                    handleSubmitComment(e)
+                                }}>
+                                    {/* if comment.text.length is 0 make the button disabled */}
+                                    <Typography variant="body2" sx={{fontSize: "0.9rem"}}>
+                                        Save
+                                    </Typography>
+                                </Button>
+                    }
                 </Box>
             </Box>
         </>

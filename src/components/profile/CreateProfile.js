@@ -1,6 +1,6 @@
 import { Button, Checkbox, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import React, {useEffect, useRef, useState} from "react"
+import React, {useEffect, useState} from "react"
 import { useHistory, useParams, Link } from "react-router-dom"
 import { createProfile, getTagsForProfile } from "./ProfileManager"
 
@@ -100,6 +100,11 @@ export const CreateProfile = () => {
                     </Box>
                 </Box>
                 <Box>
+                    <Link to="/forums" onClick={(e)=>handleNewProfile(e)}>
+                        <Typography>
+                            Want to skip this step? Visit the forum.
+                        </Typography>
+                    </Link>
                     <Button
                     sx={{
                         width: "7rem",

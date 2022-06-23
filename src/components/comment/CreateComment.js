@@ -36,13 +36,12 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
             <Box sx={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "70%"
+                    width: "80%"
                 }}>
                 <Box>
                     <TextField
                         margin="normal"
                         size="small"
-                        required
                         fullWidth
                         multiline
                         rows={2}
@@ -55,24 +54,48 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
                     />
                 </Box>
                 <Box>
-                    <Button
-                    sx={{
-                        width: "7rem",
-                        height: "2rem",
-                        color: "white",
-                        backgroundColor: "rgb(22, 211, 22)",
-                        ":hover": {
-                            backgroundColor: "rgb(8, 189, 8)"
-                        }
-                    }}
-                    onClick={(e)=>{
-                        handleSubmitComment(e)
-                    }}>
-                        {/* if comment.text.length is 0 make the button disabled */}
-                        <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
-                            Comment
-                        </Typography>
-                    </Button>
+                    {
+                        comment.text.length == 0 
+                            ?
+                            <Button
+                            sx={{
+                                width: "7rem",
+                                height: "2rem",
+                                color: "white",
+                                backgroundColor: "rgb(22, 211, 22)",
+                                ":hover": {
+                                    backgroundColor: "rgb(8, 189, 8)"
+                                },
+                                float: "right",
+                            }}
+                            disabled>
+                                {/* if comment.text.length is 0 make the button disabled */}
+                                <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                                    Comment
+                                </Typography>
+                            </Button>
+                            :
+                            <Button
+                            sx={{
+                                width: "7rem",
+                                height: "2rem",
+                                color: "white",
+                                backgroundColor: "rgb(22, 211, 22)",
+                                ":hover": {
+                                    backgroundColor: "rgb(8, 189, 8)"
+                                },
+                                float: "right",
+                            }}
+                            onClick={(e)=>{
+                                handleSubmitComment(e)
+                            }}>
+                                {/* if comment.text.length is 0 make the button disabled */}
+                                <Typography variant="body3" sx={{fontSize: "0.8rem"}}>
+                                    Comment
+                                </Typography>
+                            </Button>
+
+                    }
                 </Box>
             </Box>
         </>

@@ -48,10 +48,10 @@ export const Comment = ({listView, comment, refreshPage}) => {
                                                 ?
                                                     <Box>
                                                         <Button onClick={()=>setIsEditing(true)}>
-                                                            <EditRoundedIcon fontSize="small"/>
+                                                            <EditRoundedIcon sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                         </Button>
                                                         <Button onClick={()=>setShowAlert(comment.id)}>
-                                                            <DeleteRounded fontSize="small"/>
+                                                            <DeleteRounded sx={{color: "rgba(145, 145, 145, 0.705)"}} fontSize="small"/>
                                                         </Button>
                                                     </Box> 
                                                 : ""
