@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { Grid } from "@mui/material"
 
 
 const theme = createTheme()
@@ -94,15 +95,17 @@ export const Login = () => {
               >
                 Sign In
               </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link to="/register" variant="body2">
+                    Not a member yet? Register
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
           </Box>
         </Container>
       </ThemeProvider>
-      <section>
-        <Box sx={{display: "flex", justifyContent: "flex-end", width: "70%"}}>
-          <Link to="/register">Not a member yet?</Link>
-        </Box>
-      </section>
     </main>
   )
 }
