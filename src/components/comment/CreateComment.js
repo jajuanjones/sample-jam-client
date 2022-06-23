@@ -36,7 +36,7 @@ export const CreateCommentForm = ({ post, refreshPage }) => {
             <Box sx={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "70%"
+                    width: "80%"
                 }}>
                 <Box>
                     <TextField
