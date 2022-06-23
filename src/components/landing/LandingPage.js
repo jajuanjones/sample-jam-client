@@ -16,9 +16,8 @@ export const LandingPage = () => {
                     backgroundImage: `url(${heroLogo})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
-                    backgroundColor: "rgb(131, 131, 131)",
                     "@media (max-width: 1330px)": {
-                        backgroundSize: "1330px 100%",
+                        backgroundSize: "1330px 100vh",
                         backgroundPosition: "center"
                     }
                     }}>
@@ -46,7 +45,8 @@ export const LandingPage = () => {
                                 color: "rgb(219, 218, 218)",
                                 textShadow: "0 0 2px rgb(219, 218, 218)"
                                 }}> Sample Jam</span>.</Typography>
-                            <Typography variant="subtitle1" fontSize={20}>A forum built by musicians for musicians.<br/>
+                            <Typography variant="subtitle1" fontSize={23} fontWeight="bold">A forum built by musicians for musicians.</Typography>
+                            <Typography variant="subtitle2" fontSize={20}>
                             Come have engaging conversations about a diversity of topics!</Typography>
                             <Box>
                                 <Button variant="contained"
@@ -54,7 +54,8 @@ export const LandingPage = () => {
                                     backgroundColor: "rgb(19, 185, 19)",
                                     ":hover": {
                                         backgroundColor: "rgb(8, 189, 8)"
-                                    }
+                                    },
+                                    mt: 2
                                 }} onClick={()=>history.push("/login")}>
                                     <Typography fontWeight="bold">
                                         Login/Register
