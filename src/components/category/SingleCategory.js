@@ -25,7 +25,7 @@ export const SingleCategory = () => {
     return(
         <>
             <Box>
-                <Box sx={{display: "flex", justifyContent: "flex-end", mt: 5, mr: 5}}>
+                <Box sx={{display: "flex", justifyContent: "flex-end", m: "2rem auto", width: "72%"}}>
                     <Button variant="contained"
                     sx={{
                         width: "9rem",

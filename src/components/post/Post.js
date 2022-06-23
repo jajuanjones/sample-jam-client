@@ -25,7 +25,7 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                         flexDirection: "row",
                         alignItems: "center",
                         m: "0.4rem auto",
-                        width: "100%",
+                        width: "70%",
                         border: 1,
                         borderColor: "rgba(165, 165, 165, 0.733)",
                         padding: 1,
