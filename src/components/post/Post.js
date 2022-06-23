@@ -24,19 +24,21 @@ export const Post = ({ post, listview, refreshPage, setPost }) => {
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        m: "1rem auto",
+                        m: "0.4rem auto",
                         width: "80%",
                         border: 1,
+                        borderColor: "rgba(165, 165, 165, 0.733)",
                         padding: 1,
                         borderRadius: 1
                         }}>
-                        <Box>
+                        <Box sx={{ml: 3}}>
                             <Profile listView={true} myView={false} profile={post.profile}/>
                         </Box>
                         <Box>
                             <Link to={`/forum/posts/${post.id}`}
                                 style={{
                                     textDecoration: "none",
+                                    color: "black",
                                     ":hover": {
                                         textDecoration: "underline"
                                     }

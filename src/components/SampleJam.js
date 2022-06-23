@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { LandingPage } from "./landing/LandingPage"
 
 export const SampleJam = () => {
   const [token, setTokenState] = useState(localStorage.getItem('auth_token'))
@@ -14,11 +15,14 @@ export const SampleJam = () => {
   }
 
   return <>
+    
     <Route>
-        <NavBar token={token} setToken={setToken} />
-        <ApplicationViews />
+      <ApplicationViews token={token} setToken={setToken} />
     </Route>
 
+    <Route exact path={["/welcome-page", "/"]}>
+      <LandingPage />
+    </Route>
 
     <Route exact path="/login" >
       <Login token={token} setToken={setToken} />

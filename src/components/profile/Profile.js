@@ -68,7 +68,7 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                         <Box sx={{
                             display: "flex",
                             flexDirection: "row",
-                            width: 250
+                            width: 100
                         }}>
                             <Box sx={{textAlign: "left"}}>
                                 <Link
@@ -86,13 +86,6 @@ export const Profile = ({listView, myView, profile, refreshProfilePage, setMyPro
                                         {profile.user?.username}
                                     </Typography>
                                 </Link>
-                                {/* <Typography variant="body2" sx={{fontSize: 13}}>
-                                    {profile.tags?.map(tag=>{
-                                        return <>
-                                            {tag.label}{' '}
-                                        </>
-                                        })}
-                                </Typography> */}
                             </Box>
                         </Box>
                     :

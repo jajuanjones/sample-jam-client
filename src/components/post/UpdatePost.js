@@ -1,10 +1,18 @@
 import { Box, Button, TextField, Typography } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
-import { editPost } from "./PostManager"
+import { editPost, getSinglePost } from "./PostManager"
 
 
 export const UpdatePostForm = ({setIsEditing, refreshPage, setPost, post}) => {
+    // state variable to use in ternary checking if text string has changed
+    const [currentPost, setCurrentPost] = useState({text:""})
+    // get the current post so we can check its text
+    useEffect(()=>{
+        if(post){
+            getSinglePost(post.id).then(setCurrentPost)
+        }
+    },[])
 
     const handleSubmitPost = (e) => {
         e.preventDefault()
@@ -72,7 +80,7 @@ export const UpdatePostForm = ({setIsEditing, refreshPage, setPost, post}) => {
                         </Typography>
                     </Button>
                     {
-                        post.text.length == post.text.length
+                        post.text.length == currentPost.text.length
                             ?
                                 <Button
                                 sx={{

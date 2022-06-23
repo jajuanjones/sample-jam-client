@@ -10,36 +10,42 @@ import { MyProfile } from "./profile/MyProfile"
 import { CreateCommentForm } from "./comment/CreateComment"
 import { UserProfile } from "./profile/UserProfile"
 import { UploadMusic } from "./music/UploadMusic"
+import { NavBar } from "./nav/NavBar"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = ({token, setToken}) => {
     return <>
         <main>
-            <Route exact path={["/welcome-page", "/"]}>
-                <LandingPage/>
-            </Route>
             <Route exact path="/forums/forum/:categoryId(\d+)-:categoryName/posts">
-                <SingleCategory/>
+                <NavBar token={token} setToken={setToken} />
+                <SingleCategory />
             </Route>
             <Route exact path="/forums">
-                <CategoryList/>
+                <NavBar token={token} setToken={setToken} />
+                <CategoryList />
             </Route>
             <Route exact path="/create-profile/:userId(\d+)">
-                <CreateProfile/>
+                <NavBar token={token} setToken={setToken} />
+                <CreateProfile />
             </Route>
             <Route exact path="/forum/posts/:postId(\d+)">
-                <SinglePost/>
+                <NavBar token={token} setToken={setToken} />
+                <SinglePost />
             </Route>
             <Route exact path="/forum/:categoryId(\d+)-:categoryName/make-post">
-                <CreatePostForm/>
+                <NavBar token={token} setToken={setToken} />
+                <CreatePostForm />
             </Route>
             <Route exact path="/profiles/your-profile">
-                <MyProfile/>
+                <NavBar token={token} setToken={setToken} />
+                <MyProfile />
             </Route>
             <Route exact path="/profiles/:profileId(\d+)-:profileName">
-                <UserProfile/>
+                <NavBar token={token} setToken={setToken} />
+                <UserProfile />
             </Route>
             <Route exact path="/upload-your-music">
-                <UploadMusic/>
+                <NavBar token={token} setToken={setToken} />
+                <UploadMusic />
             </Route>
         </main>
     </>

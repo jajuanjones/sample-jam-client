@@ -19,7 +19,7 @@ export const NavBar = () => {
             color: "black"
           }}/>
         </Link>
-        <Link style={{textDecoration: "none", margin: "0.5em"}} to="/profiles/your-profile">
+        <Link style={{textDecoration: "none", color: "black", margin: "0.5em"}} to="/profiles/your-profile">
           <Typography variant="body1" sx={{fontSize:"1.4em"}}>
             Profile
           </Typography>
@@ -35,7 +35,7 @@ export const NavBar = () => {
                 margin: "0.5em"
               }}
               onClick={() => {
-              localStorage.removeItem("auth_token")
+              localStorage.clear()
               history.push({ pathname: "/welcome-page" })
             }}>
               Logout
