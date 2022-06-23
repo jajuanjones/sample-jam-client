@@ -60,8 +60,8 @@ export const Login = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+            <Avatar sx={{ m: 1, background: " rgb(182,198,29)", background: "linear-gradient(207deg, rgba(182,198,29,1) 16%, rgba(121,9,94,0.6026785714285714) 40%, rgba(255,0,0,1) 87%)"}}>
+              <LockOutlinedIcon/>
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
