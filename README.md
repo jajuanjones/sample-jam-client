@@ -9,7 +9,7 @@ Sample Jam is a forum site built for the musically inclined not only to help gar
 
 Sample Jam was made for my Capstone Project at NSS. It is part of the conclusion of the back-end portion of the course where we display our understanding of programming in Django, and React as well as our ability to think algorithmicly, to problem solve, and to communicate with other developers in the process of building. Before starting this project I thought it would be cool to have a forum catered to music instead of general topics, so, I thought to myself, why don't I try!
 
-Since reaching MVP I have created a new a way for users to upload their music so that they and other users of the site can listen to their songs. You can find the code for my *MVP* [here](https://github.com/Juulo/musilink/commit/0b24cc2afb63ff34b6686480f2269b0343fb6de6). You can also view my *ERD* [here](https://drawsql.app/juulu/diagrams/samplejam) and my *Figma WireFrame* [here](https://www.figma.com/file/60AUvqrPH3erq0ZhCBf24q/Untitled?node-id=0%3A1).
+Since reaching MVP I have created a new a way for users to upload their music so that they and other users of the site can listen to their songs. You can also view my *ERD* [here](https://drawsql.app/juulu/diagrams/samplejam) and my *Figma WireFrame* [here](https://www.figma.com/file/60AUvqrPH3erq0ZhCBf24q/Untitled?node-id=0%3A1).
 
 ## The Development Process
 
