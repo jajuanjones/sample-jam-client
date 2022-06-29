@@ -13,9 +13,7 @@ Since reaching MVP I have created a new a way for users to upload their music so
 
 ## The Development Process
 
-I developed this app over the course of about a few weeks with the help of peers and other knowledgable developers. After meeting MVP in about 3-4 days, working on necessary CRUD features. I began implementing stretch goals that I had established for myself. This app is meant to mirror popular forums like reddit that offers a place where people who want a center of information and discussion involving music, as well as SoundCloud, which allows users to upload their own music. 
-
-The hardest part of developing this application was creating that second portal for our "Members". I had to go back to the drawing board to even restructure my ERD to make sure I had the most optimal solution to the problem. Now the app is fully fledged with the ability to create an account or login as a member or a user, which gives whoever is using the app certain features that the other doesn't have.
+I developed this app over the course of about a few weeks with the help of peers and other knowledgable developers. After meeting MVP in about a week and a half, working on necessary CRUD features, I began implementing stretch goals that I had established for myself. This app is meant to mirror popular forums like reddit that offers a place where people who want a center of information and discussion involving music, as well as SoundCloud, which allows users to upload their own music. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
