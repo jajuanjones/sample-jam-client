@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Sample Jam is a forum site built for the musically inclined not only to help garner discussions on musical topics between one another, but to allow its users to share music they've created.
+Sample Jam is a forum site built for the musically inclined not only to help garner discussions on musical topics between users, but to allow its users to share music they've created.
 
 ## Motivations
 
